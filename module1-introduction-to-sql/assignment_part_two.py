@@ -6,4 +6,6 @@ print('shape:', df.shape)
 
 conn = sqlite3.connect('buddymove_holidayiq.sqlite3')
 
-df.to_sql('buddymove_holidayiq', sqlite3.conn)
+buddy = df.to_sql('buddymove_holidayiq', conn)
+
+updated_conn = sqlite3.connect(buddy)
