@@ -1,8 +1,8 @@
 import sqlite3
+import pandas as pd
 
 # 1
 # find total characters
-
 # form a connection object
 conn = sqlite3.connect('rpg_db.sqlite3')
 # get cursor for the connection
@@ -14,6 +14,7 @@ FROM charactercreator_character;
 ''')
 curs.close()
 conn.commit()
+# -------------------------------- #
 
 
 # 2
@@ -34,12 +35,11 @@ for character in characters:
     print(f"Number of {character}s:", curs_character.fetchone()[0])
     curs_character.close()
     conn.commit()
-
+# -------------------------------- #
 
 
 # 3 
 # find total items
-
 # get a different cursor because we need a new one for each
 # query
 # this will act as a pointer 'armory_item'
@@ -51,12 +51,12 @@ FROM armory_item;
 items = curs_items.fetchone()[0]
 curs_items.close()
 conn.commit()
-
 print(items)
+# -------------------------------- #
+
 
 # 4
 # find total characters in each specific subclass
-
 # get a different cursor 
 # this will act as a pointer 'armory_weapon'
 curs_weapons = conn.cursor()
@@ -67,8 +67,9 @@ FROM armory_weapon;
 weapons = curs_weapons.fetchone()[0]
 curs_items.close()
 conn.commit()
-
 print(weapons)
+# -------------------------------- #
+
 
 # from lecture:
 # SELECT 
@@ -77,6 +78,7 @@ print(weapons)
 # FROM armory_item i
 # LEFT JOIN armory_weapon w ON i.item_id = w.item_ptr_id
 
+# -------------------------------- #
 
 
 # 5 find number of items each character has
@@ -92,6 +94,8 @@ LIMIT 20
 ''')
 curs_items_per_character.close()
 conn.commit()
+# -------------------------------- #
+
 
 # 6 find number of weapons each character has
 # returns first 20 rows
@@ -108,8 +112,10 @@ conn.commit()
 # GROUP BY c.character_id
 # ORDER BY weapon_count DESC
 # LIMIT 20
+# -------------------------------- #
+
 
 # 7 find average number of items the characters have
 
-
+# -------------------------------- #
 
