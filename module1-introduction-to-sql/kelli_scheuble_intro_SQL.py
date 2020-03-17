@@ -31,8 +31,11 @@ curs_items.execute('''
 SELECT COUNT(distinct item_id)
 FROM armory_item;
 ''')
+items = curs_items.fetchone()[0]
 curs_items.close()
 conn.commit()
+
+print(items)
 
 # 4
 # find total characters in each specific subclass
