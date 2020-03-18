@@ -3,16 +3,18 @@ import pandas
 import csv
 import os
 
-print(os.environ)
-exit()
 # MAKE SURE TO TAKE OUT PASSWORD BEFORE COMMITING
 
 # credentials for elephantSQL
 # set what we need to know to connect to the database
-dbname = "ljcmelcd"
-user = "ljcmelcd"
-password = "9BGqkuJs0Av6tVrVdwcCTZoMRmCP4jbF"
-host = "drona.db.elephantsql.com"
+try:
+    dbname = os.getenv("PG_USER")"
+    user = os.getenv("PG_USER")
+    password = os.getenv("PG_PASSWORD")
+    host = "drona.db.elephantsql.com"
+except Exception as ex:
+    print("Must have PG_USER and PG_PASSWORD in environment")
+    print(ex)
 
 # get connection object
 pg_conn = psycopg2.connect(dbname=dbname, user=user,
