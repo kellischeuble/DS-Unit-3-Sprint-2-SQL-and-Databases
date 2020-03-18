@@ -8,7 +8,7 @@ import os
 # credentials for elephantSQL
 # set what we need to know to connect to the database
 try:
-    dbname = os.getenv("PG_USER")"
+    dbname = os.getenv("PG_USER")
     user = os.getenv("PG_USER")
     password = os.getenv("PG_PASSWORD")
     host = "drona.db.elephantsql.com"
