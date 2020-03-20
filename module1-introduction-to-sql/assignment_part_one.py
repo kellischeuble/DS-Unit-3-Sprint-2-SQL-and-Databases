@@ -1,6 +1,7 @@
 import sqlite3
-import pandas as pd
-
+print()
+print()
+print("QUESTION ONE:")
 # 1
 # find total characters
 # form a connection object
@@ -12,11 +13,13 @@ curs.execute('''
 SELECT COUNT(distinct character_id) as character_id
 FROM charactercreator_character;
 ''')
+print('Total number of characters:', curs.fetchone()[0])
 curs.close()
 conn.commit()
-# -------------------------------- #
+print()
+print()
 
-
+print("QUESTION TWO:")
 # 2
 # find total characters in each specific subclass
 characters = ['cleric', 'fighter', 'mage', 'necromancer', 'thief']
@@ -35,9 +38,11 @@ for character in characters:
     print(f"Number of {character}s:", curs_character.fetchone()[0])
     curs_character.close()
     conn.commit()
+    print()
+    print()
 # -------------------------------- #
 
-
+print("QUESTION THREE:")
 # 3 
 # find total items
 # get a different cursor because we need a new one for each
@@ -54,7 +59,7 @@ conn.commit()
 print(items)
 # -------------------------------- #
 
-
+print("QUESTION FOUR:")
 # 4
 # find total characters in each specific subclass
 # get a different cursor 
@@ -64,10 +69,11 @@ curs_weapons.execute('''
 SELECT COUNT(item_ptr_id)
 FROM armory_weapon;
 ''')
-weapons = curs_weapons.fetchone()[0]
+print('Number of weapons:', curs_weapons.fetchone()[0])
 curs_items.close()
 conn.commit()
-print(weapons)
+print()
+print()
 # -------------------------------- #
 
 
@@ -80,7 +86,7 @@ print(weapons)
 
 # -------------------------------- #
 
-
+print("QUESTION FIVE:")
 # 5 find number of items each character has
 # returns first 20 rows
 curs_items_per_character = conn.cursor()
@@ -94,9 +100,11 @@ LIMIT 20
 ''')
 curs_items_per_character.close()
 conn.commit()
+print()
+print()
 # -------------------------------- #
 
-
+print("QUESTION SIX:")
 # 6 find number of weapons each character has
 # returns first 20 rows
 
@@ -114,7 +122,7 @@ conn.commit()
 # LIMIT 20
 # -------------------------------- #
 
-
+print("QUESTION SEVEN:")
 # 7 find average number of items the characters have
 
 # -------------------------------- #

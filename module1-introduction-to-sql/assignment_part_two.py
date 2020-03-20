@@ -8,4 +8,3 @@ conn = sqlite3.connect('buddymove_holidayiq.sqlite3')
 
 buddy = df.to_sql('buddymove_holidayiq', conn)
 
-updated_conn = sqlite3.connect(buddy)
